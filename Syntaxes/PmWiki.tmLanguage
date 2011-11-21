@@ -43,26 +43,43 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>%comment%</string>
+			<string>(^[ \t]+)?(?=%comment%)</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.comment.pmwiki</string>
+					<string>punctuation.whitespace.comment.leading.pmwiki</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>$\n?</string>
-			<key>name</key>
-			<string>comment.line.pmwiki</string>
+			<string>(?!\G)</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>match</key>
-					<string>(?&gt;\\\s*\n)</string>
+					<key>begin</key>
+					<string>%comment%</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.comment.pmwiki</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\n</string>
 					<key>name</key>
-					<string>punctuation.separator.continuation.pmwiki</string>
+					<string>comment.line.pmwiki</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>(?&gt;\\\s*\n)</string>
+							<key>name</key>
+							<string>punctuation.separator.continuation.pmwiki</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
